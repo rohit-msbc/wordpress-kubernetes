@@ -8,7 +8,7 @@ pipeline {
         }
         stage('pv') {
             steps {
-                sh 'kubectl create -f expose.yml'
+                sh 'kubectl version'
             }
         }
     }
