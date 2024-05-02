@@ -13,27 +13,5 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to sql') {
-            steps {
-                script {
-                    sh 'kubectl apply -f sql-deploy.yml'
-                }
-            }
-        }
-        stage('Deploy to wordpress') {
-            steps {
-                script {
-                    sh 'kubectl apply -f wordpress-deploy.yml'
-                }
-            }
-        }
-        
-        stage('Deploy to expose') {
-            steps {
-                script {
-                    sh 'kubectl apply -f expose.yml'
-                }
-            }
-        }
     }
 }
