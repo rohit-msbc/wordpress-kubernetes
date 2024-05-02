@@ -7,9 +7,13 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rohit-msbc/wordpress-kubernetes.git']]])
             }
         }
-        stage('Run Commands') {
+
+        stage('Deploy to Minikube') {
             steps {
-                sh 'minikube kubectl run redis --image=redis:alpine'
+                script {
+                    def kubeConfig = readFile("${env.HOME}/.kube/config")
+                    sh "kubectl --kubeconfig=${kubeConfig} apply -f deployment.yml"
+                }
             }
         }
     }
