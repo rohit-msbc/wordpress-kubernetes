@@ -6,17 +6,18 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/rohit-msbc/wordpress-kubernetes.git'
             }
         }
-        stage('Deploy to mysql') {
+        stage('Deploy to mysql & wordpress') {
             steps {
                 script {
-                    sh 'kubectl apply -f mysql-deploy-service.yml'
+                    sh '''kubectl apply -f mysql-deploy.yml
+                    kubectl apply -f wordpress-deploy.yml'''
                 }
             }
         }
-        stage('Deploy to wordpress') {
+        stage('Deploy to service') {
             steps {
                 script {
-                    sh 'kubectl apply -f wordpress-deploy-service.yml'
+                    sh 'kubectl apply -f service.yml'
                 }
             }
         }
