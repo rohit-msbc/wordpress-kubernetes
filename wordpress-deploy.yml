@@ -1,4 +1,3 @@
-# wordpress-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -27,15 +26,3 @@ spec:
               value: wordpress
           ports:
             - containerPort: 80
----
-# wordpress-service.yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: wordpress-service
-spec:
-  selector:
-    app: wordpress
-  ports:
-    - port: 80
-      targetPort: 80
