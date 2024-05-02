@@ -6,33 +6,9 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/rohit-msbc/wordpress-kubernetes.git'
             }
         }
-        stage('Deploy to pvc') {
+        stage('pv') {
             steps {
-                script {
-                    sh 'kubectl apply -f pvc.yml --validate=false'
-                }
-            }
-        }
-        stage('Deploy to sql') {
-            steps {
-                script {
-                    sh 'kubectl apply -f sql-deploy.yml'
-                }
-            }
-        }
-        stage('Deploy to wordpress') {
-            steps {
-                script {
-                    sh 'kubectl apply -f wordpress-deploy.yml'
-                }
-            }
-        }
-        
-        stage('Deploy to expose') {
-            steps {
-                script {
-                    sh 'kubectl apply -f expose.yml'
-                }
+                echo 'deploy'
             }
         }
     }
