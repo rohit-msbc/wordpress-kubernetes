@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git ''
+                git 'https://github.com/rohit-msbc/wordpress-kubernetes.git'
             }
         }
         stage('Deploy to Minikube') {
