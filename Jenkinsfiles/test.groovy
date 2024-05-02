@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Run Commands') {
             steps {
-                sh 'kubectl run redis --image=redis:alpine'
+                sh 'minikube kubectl run redis --image=redis:alpine'
             }
         }
     }
