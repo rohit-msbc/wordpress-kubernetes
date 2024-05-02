@@ -9,21 +9,24 @@ pipeline {
         stage('Deploy to pvc') {
             steps {
                 script {
-                    sh 'kubectl apply -f pvc.yml'
+                    sh '''kubectl apply -f mysql-pvc.yml
+                    kubectl apply -f wordpress-pvc.yml'''
                 }
             }
         }
         stage('Deploy to sql') {
             steps {
                 script {
-                    sh 'kubectl apply -f sql-deploy.yml'
+                    sh '''kubectl apply -f sql-deploy.yml
+                    kubectl apply -f mysql-service'''
                 }
             }
         }
         stage('Deploy to wordpress') {
             steps {
                 script {
-                    sh 'kubectl apply -f wordpress-deploy.yml'
+                    sh '''kubectl apply -f wordpress-deploy.yml
+                    kubectl apply -f wordpress-service.yml'''
                 }
             }
         }
