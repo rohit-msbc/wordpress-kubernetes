@@ -8,7 +8,7 @@ pipeline {
         }
         stage('pv') {
             steps {
-                echo 'kubectl create -f sql-deploy.yml'
+                sh 'kubectl create -f sql-deploy.yml'
             }
         }
     }
