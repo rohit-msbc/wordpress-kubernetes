@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        KUBECONFIG = credentials('kubeconfig')
-    }
     stages {
         stage('Clone Repository') {
             steps {
