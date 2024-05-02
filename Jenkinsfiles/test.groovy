@@ -9,7 +9,7 @@ pipeline {
         stage('Deploy to pvc') {
             steps {
                 script {
-                    sh 'kubectl apply -f pvc.yml'
+                    sh 'kubectl apply -f pvc.yml --validate=false'
                 }
             }
         }
