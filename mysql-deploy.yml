@@ -22,3 +22,8 @@ spec:
               value: wordpress
           ports:
             - containerPort: 3306
+          volumeMounts:
+          - mountPath: /data
+            name: data-volume
+          volumes:
+          
