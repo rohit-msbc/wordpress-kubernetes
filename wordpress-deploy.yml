@@ -26,3 +26,10 @@ spec:
               value: wordpress
           ports:
             - containerPort: 80
+          volumeMounts:
+          - mountPath: /data
+            name: data-volume
+          volumes:
+          - name: data-volume
+            persistentVolumeClaim:
+              claimName: wordpress
